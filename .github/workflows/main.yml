@@ -19,7 +19,7 @@ jobs:
  
       - name: Print Greeting
         run: |
-          if [ "${{ env.CAPITALIZE }}" == "true" ]; then
+          if [ "${{ env.CAPITALIZE }}" == "false" ]; then
             echo "${GREETING}" | awk '{print toupper($0)}'
           else
             echo "${GREETING}"
