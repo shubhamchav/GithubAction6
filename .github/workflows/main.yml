@@ -1,0 +1,26 @@
+name: Parameter and condition
+ 
+on:
+  push:
+    branches:
+      - master
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+ 
+    env:
+      GREETING: 'Hello'
+      CAPITALIZE: 'true'  # Ensure this is set to a string value
+ 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+ 
+      - name: Print Greeting
+        run: |
+          if [ "${{ env.CAPITALIZE }}" == "true" ]; then
+            echo "${GREETING}" | awk '{print toupper($0)}'
+          else
+            echo "${GREETING}"
+          fi
